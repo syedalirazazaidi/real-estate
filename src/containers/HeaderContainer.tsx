@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import Banner from "../components/banner";
 interface headerTyep {
   bg: string;
   source: string;
 }
 const HeaderContainer = ({ bg, source }: headerTyep) => {
-  return <div> hi dear</div>;
+  return <Banner bg={bg} source={source} />;
 };
 
 export default HeaderContainer;
