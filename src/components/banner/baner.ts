@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 type Props = {
   bg: string;
-  source?: string;
+  source: string;
 };
 // children?: React.ReactNode;
 
 const Main = styled.div<Props>`
-  background-image: url(${({ source }) => source});
+  ${({ bg, source }) =>
+    bg &&
+    `
+       background-image:url('${`${source}`}');
+  `}
   background-size: cover;
   background-position: center;
   background-repeat: none;
@@ -15,3 +19,5 @@ const Main = styled.div<Props>`
 `;
 
 export default Main;
+
+// background-image: url(${({ source }) => source});
