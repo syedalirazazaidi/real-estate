@@ -18,12 +18,3 @@ const Banner = ({ bg, source, children }: bannerProp) => {
 };
 
 export default Banner;
-
-// const Main = styled.div<bannerProp>`
-//   background-image: url(${(props) => props.source});
-//   background-size: cover;
-//   background-position: center;
-
-//   background-repeat: none;
-//   background-attachment: fixed;
-// `;

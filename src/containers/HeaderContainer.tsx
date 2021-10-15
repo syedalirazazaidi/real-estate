@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import Banner from "../components/banner";
 import links from "../components/constants/routes/nav-link";
 import HeaderWrapper from "../components/headerwrapper";
-import { Container } from "../components/headerwrapper/styles/headerwrapper";
+// import { Container } from "../components/headerwrapper/styles/headerwrapper";
+import Jumbotron from "../components/jumbotron";
+import AdvancedSearchContainer from "./AdvancedSearchContainer";
 interface headerTyep {
   bg: string;
   source: string;
   children?: React.ReactNode | any;
 }
 const HeaderContainer = ({ bg, source, children }: headerTyep) => {
+  const [sideNavShown, setSideNavShown] = useState<boolean>(false);
+  const [sideNavHidden, setSideNavHidden] = useState<boolean>(true);
   const [fixed, setFixed] = useState<boolean>(false);
+  const handleSideNavigation = () => {
+    setSideNavHidden((prevState) => !prevState);
+    setSideNavShown((prevState) => !prevState);
+  };
   return (
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
@@ -30,8 +38,42 @@ const HeaderContainer = ({ bg, source, children }: headerTyep) => {
               </HeaderWrapper.Item>
             ))}
           </HeaderWrapper.List>
+          <HeaderWrapper.List>
+            <HeaderWrapper.Item>
+              <HeaderWrapper.Anchor to="/add-listing" special="true">
+                Add Listing
+              </HeaderWrapper.Anchor>
+            </HeaderWrapper.Item>
+          </HeaderWrapper.List>
+          <HeaderWrapper.List side="side">
+            <HeaderWrapper.Item>
+              <HeaderWrapper.Button onClick={handleSideNavigation}>
+                <HeaderWrapper.Icon name="fa fa-bars" />
+              </HeaderWrapper.Button>
+            </HeaderWrapper.Item>
+          </HeaderWrapper.List>
         </HeaderWrapper.LinksContainer>
       </HeaderWrapper>
+      {bg === "true" && (
+        <Jumbotron>
+          <Jumbotron.Left>
+            <Jumbotron.Title>Find The Home You Deserve With Us</Jumbotron.Title>
+            <Jumbotron.Text>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
+              exercitationem.
+            </Jumbotron.Text>
+          </Jumbotron.Left>
+          <Jumbotron.Right>
+            <AdvancedSearchContainer />
+          </Jumbotron.Right>
+        </Jumbotron>
+      )}
+      {/* <SideNavigationContainer
+        sideNavShown={sideNavShown}
+        sideNavHidden={sideNavHidden}
+        setSideNavHidden={setSideNavHidden}
+        setSideNavShown={setSideNavShown}
+      /> */}
     </Banner>
   );
 };

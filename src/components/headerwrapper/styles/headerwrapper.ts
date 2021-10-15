@@ -66,6 +66,27 @@ export const TitleLink = styled(Link)`
 export const ListItem = styled.li`
   padding: 20px 16px;
 `;
+export const Icon = styled.i``;
+
+export const Button = styled.button`
+  padding: 10px 16px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: var(--bs-light);
+  outline: none;
+  ${Icon} {
+    font-size: 1.2rem;
+    color: var(--bs-secondary);
+  }
+  @media only screen and (max-width: 768px) {
+    margin-right: -10px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin-right: -10px;
+  }
+`;
+
 export const ListAnchor = styled(Link)<Props | any>`
   padding: 12px 16px;
   border-radius: 2px;

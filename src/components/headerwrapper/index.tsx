@@ -8,20 +8,22 @@ import {
   ListLinks,
   ListItem,
   ListAnchor,
+  Button,
+  Icon,
 } from "./styles/headerwrapper";
 type Props = {
   bg: string;
   fixed: boolean;
   children?: React.ReactNode;
   to?: string;
+  special?: string;
 };
 type PropsConta = {
   children?: React.ReactNode;
+  onClick?: () => void;
 };
-type Links = {
-  children?: React.ReactNode;
-  side: string;
-  links: string;
+type PropsButton = {
+  name: string;
 };
 
 const HeaderWrapper = ({ bg, fixed, children, ...restProps }: Props) => {
@@ -34,16 +36,23 @@ const HeaderWrapper = ({ bg, fixed, children, ...restProps }: Props) => {
 HeaderWrapper.Item = ({ children, ...restProps }: any) => {
   return <ListItem {...restProps}>{children}</ListItem>;
 };
-
-HeaderWrapper.Container = ({ children, ...restProps }: any) => {
+HeaderWrapper.Container = ({ children, ...restProps }: PropsConta) => {
   return <Container {...restProps}>{children}</Container>;
 };
+HeaderWrapper.Button = ({ children, ...restProps }: PropsConta) => {
+  return <Button {...restProps}>{children}</Button>;
+};
+
+HeaderWrapper.Icon = ({ name, ...restProps }: PropsButton) => {
+  return <Icon className={name} {...restProps} />;
+};
+
 HeaderWrapper.Anchor = function HeaderWrapperAnchor({
   children,
   bg,
   fixed,
   ...restProps
-}: Props) {
+}: any) {
   return (
     <ListAnchor bg={bg} fixed={fixed} {...restProps}>
       {children}
